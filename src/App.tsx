@@ -1,24 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import Form from './components/Form';
+import List from './components/List';
+import { getAllSubs } from './services/getAllSubs';
+import { Sub } from './types';
+
+interface AppState {
+  subs: Array<Sub>
+  newSubsNumber: number
+}
 
 function App() {
+  const [subs, setSubs] = useState<AppState['subs']>([])
+  const [newSubsNumber, setNewSubsNumber] = useState<AppState["newSubsNumber"]>(0)
+
+  const handleNewSub =(newSub: Sub): void =>{
+    setSubs(subs => [...subs, newSub])
+    setNewSubsNumber(n=> n + 1)
+
+  }
+
+  useEffect(()=>{
+
+    getAllSubs()
+    .then(setSubs)
+  },[])
+ 
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Nico subs</h1>
+        <List subs={subs}/>
+        New Subs: {newSubsNumber}
+        <Form onNewSub={handleNewSub}/>
     </div>
   );
 }
