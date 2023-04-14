@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev":"ts-node-dev ./src/index.ts",
+    "json-server": "json-server --watch diaryData.json",
+    "dev": "ts-node-dev ./src/index.ts",
     "tsc": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,6 +21,7 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "json-server": "^0.17.3"
   }
 }

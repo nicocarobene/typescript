@@ -1,10 +1,20 @@
-import diaryData from '../routes/diaryData.json'
-import { DiaryEntry, NewDiaryEntry, NonSensitiveInfoDiaryEntry } from '../../definition'
+import diaryData from '../../diaryData.json'
+import {  NonSensitiveInfoDiaryEntry } from '../../definition'
 
-const getEntries= (): Array<DiaryEntry> => diaryData 
+// DiaryEntry, NewDiaryEntry
+// : Array<DiaryEntry>
+const getEntries= () =>{
+    
+    const result = ()=>{ return fetch('http://localhost:3000/db')
+        .then(res=> res.json())
+        .then(json=> {return json.post})
+    }
+    result().then(resp=> console.log(resp))
+    
+}
 
 const getNonSensitiveEntries = (): Array<NonSensitiveInfoDiaryEntry> =>{
-    return diaryData.map(({id,date,weather,visibility})=>{
+    return diaryData.post.map(({id,date,weather,visibility})=>{
         return {
             id,
             date,

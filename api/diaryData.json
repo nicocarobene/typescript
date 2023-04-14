@@ -1,4 +1,4 @@
-[
+{ "post":[
   {
       "id": 4,
       "date": "2017-05-11",
@@ -27,4 +27,4 @@
     "visibility": "good",
     "comment": "I'm getting pretty confident although I hit a flock of birds"
 }
-]
+]}
